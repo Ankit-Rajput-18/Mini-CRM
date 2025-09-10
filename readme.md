@@ -95,8 +95,7 @@ Backend will run on http://localhost:5000
 
 
 ### 🔐 Register
-![Register](./screenshots/register-ss.png)
-
+![Register](https://raw.githubusercontent.com/Ankit-Rajput-18/Mini-CRM/main/screenshots/register-ss.png)
 ### 🔑 Login
 ![Login](./screenshots/login.png)
 
