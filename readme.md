@@ -95,7 +95,7 @@ Backend will run on http://localhost:5000
 
 
 ### 🔐 Register
-![Register](./screenshots/register.png)
+![Register](./screenshots/register-ss.png)
 
 ### 🔑 Login
 ![Login](./screenshots/login.png)
