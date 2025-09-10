@@ -95,22 +95,22 @@ Backend will run on http://localhost:5000
 
 
 ### 🔐 Register
-![Register](./screenshots/register.png)
+[Register](./screenshots/register.png)
 
 ### 🔑 Login
-![Login](./screenshots/login.png)
+[Login](./screenshots/login.png)
 
 ### 📊 Dashboard
-![Dashboard](./screenshots/dashboard.png)
+[Dashboard](./screenshots/dashboard.png)
 
 ### 👥 Customers
-![Customers](./screenshots/customers.png)
+[Customers](./screenshots/customers.png)
 
 ### 📄 Customer Details
-![Customer Details](./screenshots/customer-details.png)
+[Customer Details](./screenshots/customer-details.png)
 
 ### 🚪 Logout
-![Logout](./screenshots/logout.png)
+[Logout](./screenshots/logout.png)
 
 
 
