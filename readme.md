@@ -96,22 +96,21 @@ Backend will run on http://localhost:5000
 
 ### 🔐 Register
 ![Register](https://raw.githubusercontent.com/Ankit-Rajput-18/Mini-CRM/main/screenshots/register-ss.png)
+
 ### 🔑 Login
-![Login](./screenshots/login.png)
+![Login](https://raw.githubusercontent.com/Ankit-Rajput-18/Mini-CRM/main/screenshots/login.png)
 
 ### 📊 Dashboard
-![Dashboard](./screenshots/dashboard.png)
+![Dashboard](https://raw.githubusercontent.com/Ankit-Rajput-18/Mini-CRM/main/screenshots/dashboard.png)
 
 ### 👥 Customers
-![Customers](./screenshots/customers.png)
+![Customers](https://raw.githubusercontent.com/Ankit-Rajput-18/Mini-CRM/main/screenshots/customers.png)
 
 ### 📄 Customer Details
-![Customer Details](./screenshots/customer-details.png)
+![Customer Details](https://raw.githubusercontent.com/Ankit-Rajput-18/Mini-CRM/main/screenshots/customer-details.png)
 
 ### 🚪 Logout
-![Logout](./screenshots/logout.png)
-
-
+![Logout](https://raw.githubusercontent.com/Ankit-Rajput-18/Mini-CRM/main/screenshots/logout.png)
 
 ## 📦 Deliverables
 
