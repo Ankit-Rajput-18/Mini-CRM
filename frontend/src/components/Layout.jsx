@@ -1,97 +1,128 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { LogOut, Menu, X } from "lucide-react";
+import { LogOut, Download, Home, Users, BarChart3, Menu, X } from "lucide-react";
 import { AuthContext } from "../contexts/AuthContext";
-import { toast } from "sonner"; // ✅ toast import
+import { toast } from "sonner";
 
 export default function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
-  const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
-    { path: "/dashboard", label: "Dashboard" },
-    { path: "/customers", label: "Customers" },
+    { path: "/", label: "Home", icon: <Home size={16} /> },
+    { path: "/dashboard", label: "Dashboard", icon: <BarChart3 size={16} /> },
+    { path: "/customers", label: "Customers", icon: <Users size={16} /> },
   ];
 
   function handleLogout() {
     logout();
-    toast.success("You have been logged out ✅"); // 🔥 nice toast
+    toast.success("You have been logged out ✅");
     navigate("/login", { replace: true });
+  }
+
+  function handleDownload(type) {
+    toast.success(`${type} data downloaded ✅`);
   }
 
   return (
     <div className="h-screen flex flex-col bg-gray-50">
-      {/* Navbar */}
-      <header className="bg-indigo-600 text-white shadow px-6 py-4 flex justify-between items-center">
-        <div className="flex items-center gap-4">
-          {/* Hamburger */}
-          <button
-            className="p-2 rounded-lg bg-indigo-500 hover:bg-indigo-400"
-            onClick={() => setOpen(true)}
-          >
-            <Menu size={22} />
-          </button>
-          <h1 className="text-lg md:text-xl font-semibold">Mini-CRM</h1>
-        </div>
-        <span className="text-sm text-indigo-100">
-          {new Date().toLocaleDateString()}
-        </span>
-      </header>
+      {/* Sticky Navbar */}
+      <header className="sticky top-0 z-50 bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+          {/* Logo */}
+          <div className="flex items-center gap-2 font-bold text-lg">
+            <span className="bg-white text-indigo-600 px-2 py-1 rounded-lg">CRM</span>
+            <span className="hidden sm:inline">Mini CRM</span>
+          </div>
 
-      {/* Sidebar Overlay */}
-      {open && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-40 z-40"
-          onClick={() => setOpen(false)}
-        />
-      )}
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex gap-6">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`flex items-center gap-1 font-medium transition ${
+                  location.pathname === item.path
+                    ? "text-yellow-300"
+                    : "hover:text-gray-200"
+                }`}
+              >
+                {item.icon}
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
-      {/* Sidebar */}
-      <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-xl transform transition-transform duration-300 z-50
-        ${open ? "translate-x-0" : "-translate-x-full"}`}
-      >
-        <div className="flex justify-between items-center p-6 border-b">
-          <span className="text-xl font-bold text-indigo-600">Menu</span>
-          <button
-            onClick={() => setOpen(false)}
-            className="p-2 rounded-lg hover:bg-gray-100"
-          >
-            <X size={20} />
-          </button>
-        </div>
-
-        {/* Nav Items */}
-        <nav className="flex-1 flex flex-col p-4 space-y-2">
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              onClick={() => setOpen(false)}
-              className={`block px-4 py-2 rounded-lg font-medium transition ${
-                location.pathname.startsWith(item.path)
-                  ? "bg-indigo-600 text-white"
-                  : "text-gray-700 hover:bg-indigo-50"
-              }`}
+          {/* Right Actions Desktop */}
+          <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={() => handleDownload("Customers")}
+              className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-green-600 hover:bg-green-700 text-white text-sm"
             >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+              <Download size={14} /> Customers
+            </button>
+            <button
+              onClick={() => handleDownload("Leads")}
+              className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm"
+            >
+              <Download size={14} /> Leads
+            </button>
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-700 text-white text-sm"
+            >
+              <LogOut size={14} /> Logout
+            </button>
+          </div>
 
-        {/* Logout */}
-        <div className="p-4 border-t">
+          {/* Mobile Hamburger */}
           <button
-            onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700"
+            className="md:hidden text-white"
+            onClick={() => setMenuOpen(!menuOpen)}
           >
-            <LogOut size={18} />
-            Logout
+            {menuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
-      </aside>
+
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="md:hidden bg-indigo-700 text-white flex flex-col items-center py-6 space-y-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() => setMenuOpen(false)}
+                className={`flex items-center gap-2 text-lg ${
+                  location.pathname === item.path ? "text-yellow-300" : "hover:text-gray-300"
+                }`}
+              >
+                {item.icon}
+                {item.label}
+              </Link>
+            ))}
+            <button
+              onClick={() => handleDownload("Customers")}
+              className="px-4 py-2 bg-green-600 rounded-lg w-40"
+            >
+              Download Customers
+            </button>
+            <button
+              onClick={() => handleDownload("Leads")}
+              className="px-4 py-2 bg-blue-600 rounded-lg w-40"
+            >
+              Download Leads
+            </button>
+            <button
+              onClick={handleLogout}
+              className="px-4 py-2 bg-red-600 rounded-lg w-40"
+            >
+              Logout
+            </button>
+          </div>
+        )}
+      </header>
 
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto p-6">

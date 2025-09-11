@@ -60,8 +60,12 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white shadow rounded-xl p-6">
           <h3 className="text-lg font-semibold mb-2">Summary</h3>
-          <div className="text-gray-600">Total Customers: <b>{customers.length}</b></div>
-          <div className="text-gray-600">Total Leads: <b>{leads.length}</b></div>
+          <div className="text-gray-600">
+            Total Customers: <b>{customers.length}</b>
+          </div>
+          <div className="text-gray-600">
+            Total Leads: <b>{leads.length}</b>
+          </div>
         </div>
 
         <div className="bg-white shadow rounded-xl p-6">
@@ -97,7 +101,9 @@ export default function Dashboard() {
 
       {/* Leads Value */}
       <div className="bg-white shadow rounded-xl p-6">
-        <h3 className="text-lg font-semibold mb-4">Leads Value by Status (Bar)</h3>
+        <h3 className="text-lg font-semibold mb-4">
+          Leads Value by Status (Bar)
+        </h3>
         {leads.length === 0 ? (
           <div className="text-gray-500">No leads to display</div>
         ) : (
@@ -111,6 +117,39 @@ export default function Dashboard() {
               <Bar dataKey="value" fill="#4f46e5" radius={[8, 8, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
+        )}
+      </div>
+
+      {/* Leads Table */}
+      <div className="bg-white shadow rounded-xl p-6">
+        <h3 className="text-lg font-semibold mb-4">All Leads</h3>
+        {leads.length === 0 ? (
+          <div className="text-gray-500">No leads available</div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full border border-gray-200 rounded-lg">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="px-4 py-2 text-left">Title</th>
+                  <th className="px-4 py-2 text-left">Status</th>
+                  <th className="px-4 py-2 text-left">Value</th>
+                  <th className="px-4 py-2 text-left">Created At</th>
+                </tr>
+              </thead>
+              <tbody>
+                {leads.map((lead) => (
+                  <tr key={lead._id} className="border-t">
+                    <td className="px-4 py-2">{lead.title}</td>
+                    <td className="px-4 py-2">{lead.status}</td>
+                    <td className="px-4 py-2">${lead.value}</td>
+                    <td className="px-4 py-2">
+                      {new Date(lead.createdAt).toLocaleDateString()}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>

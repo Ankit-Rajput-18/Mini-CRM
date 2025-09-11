@@ -93,11 +93,12 @@ nav a:hover {
 }
 
 nav button {
-  background-color: #0d4ca3;
+  background-color: #7146e9;
   color: white;
   padding: 4px 8px;
   border-radius: 4px;
   margin-left: 5px;
+  border-radius: 15px;
 }
 
 /* Responsive */

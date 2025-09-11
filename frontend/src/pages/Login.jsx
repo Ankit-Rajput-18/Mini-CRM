@@ -14,7 +14,7 @@ export default function Login() {
     const res = await apiLogin(email, password);
     if (res.token) {
       login(res);
-      navigate("/");
+      navigate("/dashboard"); // ✅ after login go to dashboard
     } else {
       alert(res.message || "Login failed");
     }

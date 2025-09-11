@@ -1,21 +1,19 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { apiRegister } from "../api/api";
-import { AuthContext } from "../contexts/AuthContext";
 
 export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
     const res = await apiRegister(name, email, password);
-    if (res.token) {
-      login(res); // auto login after register
-      navigate("/");
+    if (res.success) {
+      alert("Registration successful! Please login.");
+      navigate("/login"); // ✅ after register go to login
     } else {
       alert(res.message || "Registration failed");
     }

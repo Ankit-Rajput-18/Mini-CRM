@@ -5,7 +5,8 @@ import CustomerDetail from "./pages/CustomerDetail";
 import Layout from "./components/Layout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import 'react-phone-input-2/lib/style.css';
+import "react-phone-input-2/lib/style.css";
+import Home from "./pages/Home";
 import { Toaster } from "sonner";
 
 import { AuthProvider, AuthContext } from "./contexts/AuthContext";
@@ -23,6 +24,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           {/* Public Routes */}
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
@@ -31,17 +33,16 @@ export default function App() {
             path="/"
             element={
               <PrivateRoute>
-                <Layout onLogout={() => {}} />
+                <Layout />
               </PrivateRoute>
             }
           >
-            <Route index element={<Dashboard />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="customers" element={<CustomersList />} />
             <Route path="customers/:id" element={<CustomerDetail />} />
           </Route>
         </Routes>
-         <Toaster position="top-center" richColors />
+        <Toaster position="top-center" richColors />
       </BrowserRouter>
     </AuthProvider>
   );

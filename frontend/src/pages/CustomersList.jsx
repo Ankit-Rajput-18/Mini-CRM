@@ -13,7 +13,15 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Pagination from "../components/Pagination";
 import { Link } from "react-router-dom";
-import { User, Mail, Phone, Building2, Trash2, Eye } from "lucide-react";
+import {
+  User,
+  Mail,
+  Phone,
+  Building2,
+  Trash2,
+  Eye,
+  PlusCircle,
+} from "lucide-react";
 
 // ✅ Yup schema validation
 const schema = yup.object().shape({
@@ -22,11 +30,10 @@ const schema = yup.object().shape({
     .string()
     .email(" Enter a valid email")
     .required(" Email is required"),
-phone: yup
-  .string()
-  .matches(/^\+?\d{10,15}$/, " Enter a valid phone number")
-  .required(" Phone number is required"),
-
+  phone: yup
+    .string()
+    .matches(/^\+?\d{10,15}$/, " Enter a valid phone number")
+    .required(" Phone number is required"),
   company: yup.string().required(" Company name is required"),
 });
 
@@ -160,35 +167,38 @@ export default function CustomersList() {
               />
             </div>
             {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
             )}
           </div>
 
           {/* Phone */}
-       <div className="flex flex-col">
-  <label className="text-sm font-medium text-gray-600 mb-1">
-    Phone
-  </label>
-  <div className="border rounded-lg px-2 py-1 bg-white">
-    <Controller
-      name="phone"
-      control={control}
-      render={({ field }) => (
-        <PhoneInput
-          {...field}
-          country={"in"} // ✅ default India, but user dropdown se change kar sakta hai
-          enableSearch={true} // ✅ search option for countries
-          countryCodeEditable={false} // ✅ user +91 ya code edit na kare
-          inputClass="!w-full !py-2 !pl-12 !rounded-lg !border"
-        />
-      )}
-    />
-  </div>
-  {errors.phone && (
-    <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
-  )}
-</div>
-
+          <div className="flex flex-col">
+            <label className="text-sm font-medium text-gray-600 mb-1">
+              Phone
+            </label>
+            <div className="border rounded-lg px-2 py-1 bg-white">
+              <Controller
+                name="phone"
+                control={control}
+                render={({ field }) => (
+                  <PhoneInput
+                    {...field}
+                    country={"in"}
+                    enableSearch={true}
+                    countryCodeEditable={false}
+                    inputClass="!w-full !py-2 !pl-12 !rounded-lg !border"
+                  />
+                )}
+              />
+            </div>
+            {errors.phone && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.phone.message}
+              </p>
+            )}
+          </div>
 
           {/* Company */}
           <div className="flex flex-col">
@@ -204,7 +214,9 @@ export default function CustomersList() {
               />
             </div>
             {errors.company && (
-              <p className="text-red-500 text-sm mt-1">{errors.company.message}</p>
+              <p className="text-red-500 text-sm mt-1">
+                {errors.company.message}
+              </p>
             )}
           </div>
 
@@ -266,6 +278,11 @@ export default function CustomersList() {
                   <Link to={`/customers/${c._id}`} className="flex-1">
                     <button className="w-full flex items-center justify-center gap-1 px-3 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
                       <Eye size={16} /> View
+                    </button>
+                  </Link>
+                  <Link to={`/customers/${c._id}`} className="flex-1">
+                    <button className="w-full flex items-center justify-center gap-1 px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                      <PlusCircle size={16} /> Lead
                     </button>
                   </Link>
                   <button
