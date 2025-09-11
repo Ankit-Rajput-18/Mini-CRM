@@ -254,11 +254,6 @@ node seedAdmin.js
 
 ![Customer Details](./screenshots/customer-details.png)
 
-### 🚪 Logout / Toasts
-
-![Logout](./screenshots/logout.png)
-
----
 
 ## ✅ Development tips / gotchas
 
