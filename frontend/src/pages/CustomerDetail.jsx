@@ -51,10 +51,9 @@ export default function CustomerDetail() {
     const leadsData = await apiGetLeads(token, id);
     setLeads(leadsData || []);
   }
-
-  useEffect(() => {
-    load();
-  }, [token, id]);
+useEffect(() => {
+  load();
+}, [load, token, id]);
 
   // ✅ Customer update
   async function handleCustomerUpdate(e) {

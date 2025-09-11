@@ -159,7 +159,7 @@ export default function Home() {
         <div className="mt-2 flex justify-center space-x-4">
           <a href="https://www.linkedin.com/in/ankit-rajput-706b47262/" className="hover:text-yellow-300">LinkedIn</a>
           <a href="https://github.com/Ankit-Rajput-18" className="hover:text-yellow-300">GitHub</a>
-          <a href="#" className="hover:text-yellow-300">Twitter</a>
+          <a href="https://www.instagram.com/ankit_rajput298/" className="hover:text-yellow-300">Instagram</a>
         </div>
       </footer>
     </div>
