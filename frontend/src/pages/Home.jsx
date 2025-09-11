@@ -16,7 +16,7 @@ export default function Home() {
     navigate("/login");
   }
   function handleSignup() {
-    navigate("/signup");
+    navigate("/register");
   }
 
   return (
