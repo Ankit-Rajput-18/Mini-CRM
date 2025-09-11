@@ -248,11 +248,11 @@ node seedAdmin.js
 
 ### 👥 Customers
 
-![Customers](./screenshots/customers.png)
+![Customers](./screenshots/customer-details.png)
 
 ### 📄 Customer Details
 
-![Customer Details](./screenshots/customer-details.png)
+![Customer Details](./screenshots/customers.png)
 
 
 ## ✅ Development tips / gotchas
