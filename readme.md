@@ -90,28 +90,6 @@ Frontend will run on http://localhost:3000
 Backend will run on http://localhost:5000
 
 
-
-🖼️ Screenshots
-
-
-### 🔐 Register
-![Register](https://raw.githubusercontent.com/Ankit-Rajput-18/Mini-CRM/main/screenshots/register-ss.png)
-
-### 🔑 Login
-![Login](https://raw.githubusercontent.com/Ankit-Rajput-18/Mini-CRM/main/screenshots/login.png)
-
-### 📊 Dashboard
-![Dashboard](https://raw.githubusercontent.com/Ankit-Rajput-18/Mini-CRM/main/screenshots/dashboard.png)
-
-### 👥 Customers
-![Customers](https://raw.githubusercontent.com/Ankit-Rajput-18/Mini-CRM/main/screenshots/customers.png)
-
-### 📄 Customer Details
-![Customer Details](https://raw.githubusercontent.com/Ankit-Rajput-18/Mini-CRM/main/screenshots/customer-details.png)
-
-### 🚪 Logout
-![Logout](https://raw.githubusercontent.com/Ankit-Rajput-18/Mini-CRM/main/screenshots/logout.png)
-
 ## 📦 Deliverables
 
 - Backend (Node + Express + MongoDB)  
