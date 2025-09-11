@@ -230,6 +230,10 @@ node seedAdmin.js
 
 > Place your screenshots inside `screenshots/` (folder at repo root). Use the exact filenames you reference below.
 
+### 🏠 Home
+
+![Home](./screenshots/home.png)
+
 ### 🔐 Register
 
 ![Register](./screenshots/register.png)
